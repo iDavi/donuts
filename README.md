@@ -1,5 +1,5 @@
 # EasyDB
-> A php system for store everything locally in a practical way.
+> A php system for store everything locally using JSON in a practical way.
 
 
 ## What for?
