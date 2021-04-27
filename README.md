@@ -34,6 +34,11 @@ Would be like this:
 echo _get ("fruit");
 ```
 it will return the value that I had set before: `banana`
-
+If I want to delete the `fruit` from the database, I will give an example below:
+```php
+_delete("fruit");
+```
 
 I hope that you enjoyed. (✿◠‿◠)
+
+
