@@ -1,37 +1,41 @@
-<?php
-
-function _get($tag) {
-$json = file_get_contents("database.json");
-$db = json_decode($json);
-return $db->{$tag};
-}
-
-function _store($tag, $var){
-    $json = file_get_contents("database.json");
-    $db = json_decode($json);
-    $db->$tag = $var;
-    $decrypted_db = json_encode($db);
-    file_put_contents("database.json", $decrypted_db);
-    return true;
-}
-
-function _delete($tag) {
-        $json = file_get_contents("database.json");
-    $db = json_decode($json);
-    unset($db->$tag);
-    $decrypted_db = json_encode($db);
-    file_put_contents("database.json", $decrypted_db);
-    return true;
-}
-
-function help(){
-echo base64_decode('
-
-PGltZyBzdHlsZT0id2lkdGg6MTUlO2hlaWdodDoxNSU7IiBzcmM9Imh0dHBzOi8vaS5pbWd1ci5jb20vYU1JN2NhRS5wbmciPjwvaW1nPgoKPGJyPgpBIHNpbXBsZSBzeXN0ZW0gZm9yIHBocCB0byBzYXZlIGV2ZXJ5dGhpbmcgZWFzaWx5ITxicj4KPGJyPgpUaGVyZSBhcmUgb25seSA0IGZ1bmN0aW9ucyBmb3IgeW91IHRvIHVzZTo8YnI+Cjxicj4KdXNlIGhlbHAoKSB0byByZXR1cm4gdGhpcyB0ZXh0ICg6PGJyPgo8YnI+ClRoZSBzeXN0ZW0gaXMgYmFzZWQgb24gMiB0aGluZ3MsIHRhZyBhbmQgdmFsdWUuPGJyPgpmb3IgeW91IHRvIHNhdmUgYW4gaXRlbSwgeW91IG5lZWQgdG8gZGVmaW5lIHRoZSB0YWcsIEkgd2lsbCBkZWZpbmUgYXMgYW4gZXhhbXBsZSAiZnJ1aXQiLCBub3cgeW91IHdpbGwgZGVmaW5lIHRoZSB2YWx1ZSwgSSB3aWxsIGdpdmUgdGhlIGV4YW1wbGUgYXMgImJhbmFuYSIuPGJyPgpfc3RvcmUgKCJmcnVpdCIsICJiYW5hbmEiKTs8YnI+Cml0IHdpbGwgcmV0dXJuIHRydWUsIHNvIHlvdSBjYW4gdXNlIGl0IGluIHRoZSBpZiB3aXRob3V0IGFkZGl0aW9uYWwgdGV4dC48YnI+Cm5vdyBpZiBpIHdhbnQgdG8gZ2V0IHRoaXMgdmFsdWUgaSB3aWxsIGRlZmluZSBvbmx5IHRoZSB0YWcsIHdoaWNoIHdhcyBmcnVpdC48YnI+CldvdWxkIGJlIGxpa2UgdGhpczo8YnI+Cl9nZXQgKCJmcnVpdCIpPGJyPgppZiBJIHVzZSBpdCBpbiBhbiBlY2hvLCBpdCB3aWxsIHJldHVybiBiYW5hbmEuPGJyPgo=
-
-');
-}
+# EasyDB
+> A php system for store everything locally in a practical way.
 
 
+## What for?
+The system was based on the super simple way to save what you need without needing several lines that fill the screen.
 
-?>
+## Resources
+- 🧠 **Super** fast, no crashes.
+- 📚 **Organized** php code.
+- 🎊 Save strings, images and objects **without losing definition**.
+- 🔧 **Practical** installation.
+
+## How to use
+
+### 🔨 Installation
+- To get started, download the `easydb` file and place it in the folder where your php code is.
+- After that, insert this into your php code:
+```php
+require 'easydb';
+```
+- The installation is already finished! time to learn to use.
+
+> 💡 EasyDB changes the permission of the database.json file automatically, if the file permissions are not `644`, change it manually.
+
+The system is based on 2 things, tag and value.
+For you to save an item, you need to define the tag, I will define as an example "fruit", now you will define the value, I will give the example as "banana".
+```php
+_store ("fruit", "banana");
+```
+it will return true, so you can use it in the if without additional text. now if i want to get this value i will define only the tag, which was fruit.
+Would be like this:
+```php
+echo _get ("fruit");
+```
+it will return the value that I had set before: `banana`
+
+
+I hope that you enjoyed. (✿◠‿◠)
+
+
