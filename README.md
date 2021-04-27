@@ -1,5 +1,5 @@
 # EasyDB
-> A php system for store everything locally using JSON in a practical way.
+> A php system for store everything locally in a practical way.
 
 
 ## What for?
@@ -21,6 +21,8 @@ require 'easydb';
 ```
 - The installation is already finished! time to learn to use.
 
+> 💡 EasyDB changes the permission of the database.json file automatically, if the file permissions are not `644`, change it manually.
+
 The system is based on 2 things, tag and value.
 For you to save an item, you need to define the tag, I will define as an example "fruit", now you will define the value, I will give the example as "banana".
 ```php
@@ -35,5 +37,3 @@ it will return the value that I had set before: `banana`
 
 
 I hope that you enjoyed. (✿◠‿◠)
-
-
