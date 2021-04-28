@@ -4,15 +4,12 @@ if (substr(sprintf('%o', fileperms('database.json')), -4) !== "0644") {
     chmod ("database.json", 0644);
 }
 }
-
-
 function _get($tag) {
 $json = file_get_contents("database.json");
 $db = json_decode($json);
 _checkperms();
 return $db->{$tag};
 }
-
 function _store($tag, $var){
     $json = file_get_contents("database.json");
     $db = json_decode($json);
@@ -32,15 +29,4 @@ function _delete($tag) {
     _checkperms();
     return true;
 }
-
-function help(){
-echo base64_decode('
-
-PGltZyBzdHlsZT0id2lkdGg6MTUlO2hlaWdodDoxNSU7IiBzcmM9Imh0dHBzOi8vaS5pbWd1ci5jb20vYU1JN2NhRS5wbmciPjwvaW1nPgoKPGJyPgpBIHNpbXBsZSBzeXN0ZW0gZm9yIHBocCB0byBzYXZlIGV2ZXJ5dGhpbmcgZWFzaWx5ITxicj4KPGJyPgpUaGVyZSBhcmUgb25seSA0IGZ1bmN0aW9ucyBmb3IgeW91IHRvIHVzZTo8YnI+Cjxicj4KdXNlIGhlbHAoKSB0byByZXR1cm4gdGhpcyB0ZXh0ICg6PGJyPgo8YnI+ClRoZSBzeXN0ZW0gaXMgYmFzZWQgb24gMiB0aGluZ3MsIHRhZyBhbmQgdmFsdWUuPGJyPgpmb3IgeW91IHRvIHNhdmUgYW4gaXRlbSwgeW91IG5lZWQgdG8gZGVmaW5lIHRoZSB0YWcsIEkgd2lsbCBkZWZpbmUgYXMgYW4gZXhhbXBsZSAiZnJ1aXQiLCBub3cgeW91IHdpbGwgZGVmaW5lIHRoZSB2YWx1ZSwgSSB3aWxsIGdpdmUgdGhlIGV4YW1wbGUgYXMgImJhbmFuYSIuPGJyPgpfc3RvcmUgKCJmcnVpdCIsICJiYW5hbmEiKTs8YnI+Cml0IHdpbGwgcmV0dXJuIHRydWUsIHNvIHlvdSBjYW4gdXNlIGl0IGluIHRoZSBpZiB3aXRob3V0IGFkZGl0aW9uYWwgdGV4dC48YnI+Cm5vdyBpZiBpIHdhbnQgdG8gZ2V0IHRoaXMgdmFsdWUgaSB3aWxsIGRlZmluZSBvbmx5IHRoZSB0YWcsIHdoaWNoIHdhcyBmcnVpdC48YnI+CldvdWxkIGJlIGxpa2UgdGhpczo8YnI+Cl9nZXQgKCJmcnVpdCIpPGJyPgppZiBJIHVzZSBpdCBpbiBhbiBlY2hvLCBpdCB3aWxsIHJldHVybiBiYW5hbmEuPGJyPgo=
-
-');
-}
-
-
-
 ?>
