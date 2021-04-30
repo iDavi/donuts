@@ -16,6 +16,9 @@ Donuts is a simple database system, where it creates a cookie as a key, and with
 
 ### ⚠ Important warning:
 **To activate the key system, you need to set `$isprivate` to `true` in the donuts file.**
+```php
+$isprivate = true;
+```
 
 ### 🔨 Installation
 - To get started, download the `donuts` file and place it in the folder where your php code is.
