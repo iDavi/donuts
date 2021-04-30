@@ -14,23 +14,8 @@
 #       The donut is a simple database system that is saved for each user without the need for their interaction, the donut creates a random key and saves it in cookies, so that it can be managed and differentiated from other users.
 #
 
-
-
-
-# TO ACTIVATE THE ABOVE SYSTEM, PUT TRUE BELOW, if you want to leave it as a global database, leave it as is.
-$isprivate = false;
-
-
-
-
 #2 - Obtain the key using the user's ip.
 parse_str($_SERVER["QUERY_STRING"], $query);
-function chckperm() {
-if (substr(sprintf('%o', fileperms('database.txt')), -4) !== "0600") {
-    chmod ("database.txt", 0600);
-}
-}
-
 
 function donutKey() {
     return donutfunction_getkey();
@@ -49,39 +34,39 @@ function donutfunction_getkey() {
 #3 - Check that the database file is protected, otherwise set the permissions.
 function donutfunction_checkperm() {
 if (substr(sprintf('%o', fileperms('database.json')), -4) !== "0600") {
-    chmod ("database.json", 0600);
+    chmod ('database.json', 0600);
 }
 }
 
-function get_($tag) {
-$db = json_decode(file_get_contents("database.json"));
+function get_($tag, $isprivate=false) {
+$db = json_decode(file_get_contents('database.json'));
 donutfunction_checkperm();
-if ($isprivate == true) {
-  $key = donutfunction_getkey(). $tag;
+if ($isprivate) {
+  $tag = donutfunction_getkey(). $tag;
 }
 return $db->{$tag};
 }
 
 
 
-function store_($tag, $value) {
-   $db = json_decode(file_get_contents("database.json"));
-if ($isprivate == true) {
-  $key = donutfunction_getkey(). $tag;
+function store_($tag, $value,$isprivate=false) {
+   $db = json_decode(file_get_contents('database.json'));
+if ($isprivate) {
+  $tag = donutfunction_getkey(). $tag;
 }
     $db->$tag = $value;
-    file_put_contents("database.json", json_encode($db));
+    file_put_contents('database.json', json_encode($db));
     donutfunction_checkperm();
     return true;
 }
 
-function delete_($tag) {
-   $db = json_decode(file_get_contents("database.json"));
-if ($isprivate == true) {
-  $key = donutfunction_getkey(). $tag;
+function delete_($tag,$isprivate=false) {
+   $db = json_decode(file_get_contents('database.json'));
+if ($isprivate) {
+  $tag = donutfunction_getkey(). $tag;
 }
    unset($db->$tag);
-    file_put_contents("database.json",json_encode($db));
+    file_put_contents('database.json',json_encode($db));
     donutfunction_checkperm();
     return true;
 }
